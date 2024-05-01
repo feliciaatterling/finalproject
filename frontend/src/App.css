@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-open {
+  width: 150px;
+  padding: 0.5rem;
+  visibility: visible;
+}
+
+.nav-closed {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
