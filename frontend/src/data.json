@@ -1,0 +1,55 @@
+[
+  {
+    "favorites": [
+      {
+        "location": "Test, no added favorites yet",
+        "cost": "$0",
+        "duration": "40days",
+        "url": ""
+      }
+    ],
+    "popular": [
+      {
+        "location": "Hong Kong, China",
+        "cost": "$1,600",
+        "duration": "8 days",
+        "url": "https://www.pexels.com/photo/city-buildings-and-green-trees-near-ocean-1337144/"
+      },
+      {
+        "location": "Barcelona, Spain",
+        "cost": "$950",
+        "duration": "5 days",
+        "url": "https://www.pexels.com/photo/aerial-photography-of-city-1388030/"
+      },
+      {
+        "location": "Seoul, South Korea",
+        "cost": "$1,350",
+        "duration": "5 days",
+        "url": "https://www.pexels.com/photo/buildings-and-body-of-water-during-golden-hour-237211/"
+      }
+    ],
+    "deals": [
+      {
+        "location": "London, England",
+        "costold": "$890",
+        "costnew": "$700",
+        "duration": "4 days",
+        "url": "https://www.pexels.com/photo/city-view-at-london-672532/"
+      },
+      {
+        "location": "Vancouver, Canada",
+        "costold": "$590",
+        "costnew": "$450",
+        "duration": "9 days",
+        "url": "https://www.pexels.com/photo/person-wearing-blue-jeans-besides-gray-steel-fence-2416602/"
+      },
+      {
+        "location": "LA, USA",
+        "costold": "$550",
+        "costnew": "$390",
+        "duration": "3 days",
+        "url": "https://www.pexels.com/photo/white-wooden-lifeguard-shed-745236/"
+      }
+    ]
+  }
+]
