@@ -76,24 +76,7 @@ app.get("/listDeals", async (req, res) => {
   res.send(results);
 });
 
-app.get("/:id", async (req, res) => {
-  console.log(req.params.id);
-  const locationId = Number(req.params.id);
-  console.log("Location to find :", locationId);
-
-  await client.connect();
-  console.log("Node connected successfully to GET-id MongoDB");
-  const query = { id: locationId };
-
-  const results = await db.collection("locations").findOne(query); // Do we need to make a collection with all?
-
-  console.log("Results :", results);
-  if (!results) res.send("Not Found").status(404);
-  else res.send(results).status(200);
-});
-
 // For guides
-
 app.get("/listGuides", async (req, res) => {
   await client.connect();
 
@@ -112,6 +95,22 @@ app.get("/listGuides", async (req, res) => {
   res.send(results);
 });
 
+app.get("/:id", async (req, res) => {
+  console.log(req.params.id);
+  const locationId = Number(req.params.id);
+  console.log("Location to find :", locationId);
+
+  await client.connect();
+  console.log("Node connected successfully to GET-id MongoDB");
+  const query = { id: locationId };
+
+  const results = await db.collection("locations").findOne(query); // Do we need to make a collection with all?
+
+  console.log("Results :", results);
+  if (!results) res.send("Not Found").status(404);
+  else res.send(results).status(200);
+});
+
 app.post("/addGuide", async (req, res) => {
   try {
     await client.connect();
@@ -121,10 +120,12 @@ app.post("/addGuide", async (req, res) => {
 
     const newGuide = {
       id: values[0],
-      title: values[1],
-      description: values[2],
-      category: values[3], // Maybe country or type of vacation
-      image: values[4],
+      location: values[1],
+      pois: values[2],
+      food: values[3],
+      when: values[4],
+      items: values[5],
+      image: values[6],
     };
 
     console.log(newGuide);
@@ -161,6 +162,7 @@ app.delete("/deleteGuide/:id", async (req, res) => {
 
 app.put("/updateGuide/:id", async (req, res) => {
   const id = Number(req.params.id);
+  const values = Object.values(req.body);
   const query = { id: id };
   await client.connect();
   console.log("Guide to Update :", id);
@@ -168,10 +170,13 @@ app.put("/updateGuide/:id", async (req, res) => {
   console.log(req.body);
   const updateData = {
     $set: {
-      title: req.body.title,
-      description: req.body.description,
-      category: req.bady.category,
-      image: req.body.imageUrl,
+      id: values[0],
+      location: values[1],
+      pois: values[2],
+      food: values[3],
+      when: values[4],
+      items: values[5],
+      image: values[6],
     },
   };
   // Add options if needed, for example { upsert: true } to create a document if it doesn't exist
