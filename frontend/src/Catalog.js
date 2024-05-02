@@ -2,13 +2,30 @@
 import Favorites from "./Favorites.js";
 import Locations from "./Locations.js";
 import locations from "./data.json";
+import Booking from "./Booking.js";
 import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import items from "./catalog.json";
 
 function Catalog() {
-  const [booking, setBooking] = useState([]);
+  const [booking, setBooking] = useState(null);
+  const [bookingView, setBookingView] = useState(0);
+
+  const setBookingItem = (item) => {
+    if (item == null) {
+      setBookingView(0);
+    } else {
+      setBookingView(1);
+    }
+
+    setBooking(item);
+  };
+
+  const readBookedItem = () => {
+    return booking;
+  };
+
   const FullCatalog = () => {
     const [ProductsCategory, setProductsCategory] = useState(items);
     const [query, setQuery] = useState("");
@@ -43,7 +60,7 @@ function Catalog() {
                             backgroundColor: "bisque",
                             marginLeft: 110,
                           }}
-                          onClick={() => setBooking(item)} // go too booking page
+                          onClick={() => setBookingItem(item)} // go too booking page
                         >
                           Book
                         </button>
@@ -114,7 +131,7 @@ function Catalog() {
                         backgroundColor: "bisque",
                         marginLeft: 110,
                       }}
-                      onClick={() => setBooking(popularItem)} // go too booking page
+                      onClick={() => setBookingItem(popularItem)} // go too booking page
                     >
                       Book
                     </button>
@@ -150,7 +167,7 @@ function Catalog() {
                         marginLeft: 110,
                         backgroundColor: "lightblue",
                       }}
-                      onClick={() => setBooking(dealItem)} // go too booking page
+                      onClick={() => setBookingItem(dealItem)} // go too booking page
                     >
                       Book
                     </button>
@@ -168,10 +185,11 @@ function Catalog() {
 
   return (
     <div>
-      <h1>Catalog of Trips</h1>
-      <FullCatalog />
-      <Locations />
-      <Favorites />
+      {bookingView === 0 && <h1>Catalog of Trips</h1>}
+      {bookingView === 0 && <FullCatalog />}
+      {bookingView === 0 && <Locations />}
+      {bookingView === 0 && <Favorites />}
+      {bookingView === 1 && <Booking setBookingItem={setBookingItem} readBookedItem={readBookedItem}/>}
     </div>
   );
 }
