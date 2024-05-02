@@ -13,19 +13,19 @@
         "location": "Hong Kong, China",
         "cost": "$1,600",
         "duration": "8 days",
-        "url": "https://www.pexels.com/photo/city-buildings-and-green-trees-near-ocean-1337144/"
+        "url": "https://images.pexels.com/photos/1337144/pexels-photo-1337144.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       },
       {
         "location": "Barcelona, Spain",
         "cost": "$950",
         "duration": "5 days",
-        "url": "https://www.pexels.com/photo/aerial-photography-of-city-1388030/"
+        "url": "https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       },
       {
         "location": "Seoul, South Korea",
         "cost": "$1,350",
         "duration": "5 days",
-        "url": "https://www.pexels.com/photo/buildings-and-body-of-water-during-golden-hour-237211/"
+        "url": "https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ],
     "deals": [
@@ -34,21 +34,21 @@
         "costold": "$890",
         "costnew": "$700",
         "duration": "4 days",
-        "url": "https://www.pexels.com/photo/city-view-at-london-672532/"
+        "url": "https://images.pexels.com/photos/672532/pexels-photo-672532.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       },
       {
         "location": "Vancouver, Canada",
         "costold": "$590",
         "costnew": "$450",
         "duration": "9 days",
-        "url": "https://www.pexels.com/photo/person-wearing-blue-jeans-besides-gray-steel-fence-2416602/"
+        "url": "https://images.pexels.com/photos/2416602/pexels-photo-2416602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       },
       {
         "location": "LA, USA",
         "costold": "$550",
         "costnew": "$390",
         "duration": "3 days",
-        "url": "https://www.pexels.com/photo/white-wooden-lifeguard-shed-745236/"
+        "url": "https://images.pexels.com/photos/745236/pexels-photo-745236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       }
     ]
   }
