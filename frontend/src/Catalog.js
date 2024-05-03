@@ -13,10 +13,6 @@ function Catalog() {
   const [fav, setFav] = useState([]);
   const [favs, setFavs] = useState([]);
 
-  useEffect(() => {
-    fetchFavs();
-  }, []);
-
   const fetchFavs = async () => {
     try {
       const response = await fetch("http://localhost:8082/listFavorites");
@@ -28,6 +24,9 @@ function Catalog() {
   };
 
   const AddFavorite = async (data) => {
+    if (data.cost == null) {
+      data.cost = data.costnew;
+    }
     console.log("Add data", data);
     try {
       const response = await fetch("http://localhost:8082/addFavorite", {
@@ -110,7 +109,7 @@ function Catalog() {
                         <div class="col">
                           <button
                             className="icon-button"
-                            //onClick={() => setFav(item)}
+                            onClick={() => AddFavorite(item)}
                             style={{
                               background: "transparent",
                               border: "none",
@@ -192,7 +191,7 @@ function Catalog() {
                     <div class="col">
                       <button
                         className="icon-button"
-                        //onClick={() => setFav(popularItem)}
+                        onClick={() => AddFavorite(popularItem)}
                         style={{
                           background: "transparent",
                           border: "none",
@@ -240,7 +239,7 @@ function Catalog() {
                     <div class="col">
                       <button
                         className="icon-button"
-                        onClick={() => setFav(dealItem)}
+                        onClick={() => AddFavorite(dealItem)}
                         style={{
                           background: "transparent",
                           border: "none",
@@ -274,9 +273,6 @@ function Catalog() {
   };
 
   function Favorites({ fetchFavs }) {
-    useEffect(() => {
-      fetchFavs();
-    }, [fetchFavs]);
 
     const listAllFavorites = (favs) => {
       return (
@@ -296,7 +292,7 @@ function Catalog() {
             >
               Add test
             </button>
-            <div class="row">
+            <div class="row row-cols-4 g-3">
               {favs.map((item, index) => (
                 <div class="col" key={index}>
                   <div class="col">
