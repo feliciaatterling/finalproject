@@ -26,6 +26,8 @@ const db = client.db(dbName);
 
 // For travel locations
 
+var favs = 0;
+
 app.get("/listFavorites", async (req, res) => {
   await client.connect();
 
@@ -39,6 +41,7 @@ app.get("/listFavorites", async (req, res) => {
     .limit(100)
     .toArray();
 
+  favs = results.length;
   console.log(results);
   res.status(200);
   res.send(results);
@@ -139,6 +142,29 @@ app.post("/addGuide", async (req, res) => {
   }
 });
 
+app.post("/addFavorite", async (req, res) => {
+  try {
+    await client.connect();
+    console.log("Add favorite");
+    const values = Object.values(req.body);
+
+    const newFavorite = {
+      id: favs + 1,
+      location: values[0],
+      cost: values[1],
+      duration: values[2],
+      url: values[3],
+    };
+
+    const results = await db.collection("favorite-locations").insertOne(newFavorite);
+    res.status(200);
+    res.send(results);
+  } catch (error) {
+    console.error("An error occurred: ", error);
+    res.status(500).send({ error: "An internal server error occurred" });
+  }
+})
+
 app.delete("/deleteGuide/:id", async (req, res) => {
   try {
     const id = Number(req.params.id);
@@ -156,6 +182,27 @@ app.delete("/deleteGuide/:id", async (req, res) => {
     res.status(200).send(guideDeleted);
   } catch (error) {
     console.error("Error deleting guide:", error);
+    res.status(500).send({ message: "Internal Server Error" });
+  }
+});
+
+app.delete("/deleteFavorite/:id", async (req, res) => {
+  try {
+    const id = Number(req.params.id);
+    await client.connect();
+    console.log("Guide to delete", id);
+    const query = { id: id };
+    
+    const favoriteDeleted = await db.collection("favorite-locations").findOne(query);
+    if (!favoriteDeleted) {
+      return res.status(404).send({ message: 'Favorite not found.' });
+    }
+    console.log(favoriteDeleted);
+
+    const results = await db.collection("favorite-locations").deleteOne(query);
+    res.status(200).send(favoriteDeleted);
+  } catch (error) {
+    console.error("Error deleting favorite:", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
