@@ -1,6 +1,7 @@
 // Component for favorite locations on home page
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { BiSolidStar, BiStar } from "react-icons/bi";
 
 function Favorites() {
   const [favs, setFavs] = useState([]);
@@ -87,30 +88,41 @@ function Favorites() {
 
                       <div class="card-text">{item.duration}</div>
 
-                      <button
-                        type="button"
-                        class="btn"
-                        style={{
-                          width: 100,
-                          backgroundColor: "bisque",
-                          marginLeft: 110,
-                        }}
-                        onClick={() => removeFavorite(item.id)}
-                      >
-                        Remove fav
-                      </button>
-                      <button
-                        type="button"
-                        class="btn"
-                        style={{
-                          width: 100,
-                          backgroundColor: "bisque",
-                          marginLeft: 110,
-                        }}
-                        onClick={() => AddFavorite(item)}
-                      >
-                        Add fav
-                      </button>
+                      <div class="col">
+                        <button
+                          className="icon-button"
+                          onClick={() => AddFavorite(item.id)}
+                          style={{
+                            background: "transparent",
+                            border: "none",
+                            fontSize: "30px",
+                          }}
+                        >
+                          <BiStar />
+                        </button>
+                        <button
+                          className="icon-button"
+                          onClick={() => removeFavorite(item.id)}
+                          style={{
+                            background: "transparent",
+                            border: "none",
+                            fontSize: "30px",
+                          }}
+                        >
+                          <BiSolidStar />
+                        </button>
+                        <button
+                          type="button"
+                          class="btn"
+                          style={{
+                            backgroundColor: "bisque",
+                            marginLeft: 110,
+                          }}
+                          onClick={() => setBookingItem(dealItem)} // go too booking page
+                        >
+                          Book
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
