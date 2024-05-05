@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import items from "./catalog.json";
-import { BiStar } from "react-icons/bi";
+import { BiSolidStar, BiStar } from "react-icons/bi";
 
 function Catalog() {
   const [booking, setBooking] = useState(null);
@@ -162,7 +162,7 @@ function Catalog() {
         <Form.Control
           type="text"
           size="lg"
-          placeholder="Search"
+          placeholder="Search for your next vacation..."
           value={query}
           onChange={handleChange}
         />
@@ -273,25 +273,11 @@ function Catalog() {
   };
 
   function Favorites({ fetchFavs }) {
-
     const listAllFavorites = (favs) => {
       return (
         <div>
           <div class="container" style={{ margin: 40 }}>
             <h3>Favorites</h3>
-            <button
-              onClick={() =>
-                AddFavorite({
-                  id: 1,
-                  location: "Test",
-                  cost: "$100",
-                  duration: "1 day",
-                  url: "test.jpg",
-                })
-              }
-            >
-              Add test
-            </button>
             <div class="row row-cols-4 g-3">
               {favs.map((item, index) => (
                 <div class="col" key={index}>
@@ -319,7 +305,7 @@ function Catalog() {
                               fontSize: "30px",
                             }}
                           >
-                            <BiStar />
+                            <BiSolidStar />
                           </button>
                           <button
                             type="button"
@@ -349,7 +335,11 @@ function Catalog() {
 
   return (
     <div>
-      {bookingView === 0 && <h1>Catalog of Trips</h1>}
+      {bookingView === 0 && (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <h1>Next Stop</h1>
+        </div>
+      )}
       {bookingView === 0 && <FullCatalog />}
       {bookingView === 0 && <Locations />}
       {bookingView === 0 && <Favorites fetchFavs={fetchFavs} />}

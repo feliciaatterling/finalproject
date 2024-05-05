@@ -70,7 +70,6 @@ function Favorites() {
       <div>
         <div class="container" style={{ margin: 40 }}>
           <h3>Favorites</h3>
-          <button onClick={AddFavorite}>Add</button>
           <div class="row">
             {favs.map((item, index) => (
               <div class="col" key={index}>
